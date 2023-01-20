@@ -39,14 +39,14 @@ let baseMaps = {
 // 1. Add a 2nd layer group for the tectonic plate data.
 let allEarthquakes = new L.LayerGroup();
 let tectonicPlates = new L.LayerGroup();
-let majorEarthquakes = new L.LayerGroup();
+let majorEQ = new L.LayerGroup();
 
 
 // 2. Add a reference to the tectonic plates group to the overlays object.
 let overlays = {
   "Earthquakes": allEarthquakes,
   "Techtonic Plates": tectonicPlates,
-  "Major Earthquakes":majorEarthquakes
+  "Major Earthquakes":majorEQ
 };
 
 // Then we add a control to the map that will allow the user to change which
@@ -168,10 +168,10 @@ L.geoJson(data, {
    onEachFeature: function(feature, layer) {
     layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
   }
-}).addTo(majorEarthquakes);
+}).addTo(majorEQ);
 
 // Then we add the earthquake layer to our map.
-majorEarthquakes.addTo(map);
+majorEQ.addTo(map);
 // 9. Close the braces and parentheses for the major earthquake data.
 });
   
